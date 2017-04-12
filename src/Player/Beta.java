@@ -38,4 +38,14 @@ public class Beta {
     public void setSumOfSalary(long sumOfSalary) {
         this.sumOfSalary = sumOfSalary;
     }
+
+    @Override
+    public String toString() {
+        return "Beta{" +
+                "yearId='" + yearId + '\'' +
+                ", sumOfSalary=" + sumOfSalary +
+                '}';
+    }
 }
+
+

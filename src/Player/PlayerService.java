@@ -41,19 +41,19 @@ public class PlayerService {
         int count = 0;
 
         List<Beta> yearList = new ArrayList<>();
-        String oldYear = null;
-        for (Player e: list){
+        String oldYear = list.get(0).getYearId();
 
-            if(!e.getYearId().equals(oldYear)){
-                yearList.add(new Beta(e.getYearId(), sum/count));
-                oldYear = e.getYearId();
-                count = 0;
+        for(Player e: list){
+            if(e.getYearId() != oldYear){
+                yearList.add(new Beta(oldYear, (sum/count)));
                 sum = 0;
+                count = 0;
+                oldYear = e.getYearId();
             }
             sum += e.getSalary();
             count++;
-
         }
+
 
 
  /*
@@ -66,12 +66,7 @@ public class PlayerService {
 
 
  */
-        for(Beta e: yearList){
-            System.out.println(e.getYearId());
-            System.out.println(e.getSumOfSalary());
-            System.out.println();
-        }
-
+        System.out.println(yearList);
 
         return 0.0;
     }
