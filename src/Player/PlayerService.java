@@ -53,6 +53,7 @@ public class PlayerService {
             sum += e.getSalary();
             count++;
         }
+        yearList.add(new Beta(oldYear, (sum/count)));
 
         return yearList;
     }
