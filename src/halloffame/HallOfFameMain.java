@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class HallOfFameMain {
     public static void main(String[] args) throws Exception{
-        //1. read file
+        //0. read file
         BufferedReader br = new BufferedReader(new FileReader("src\\HallOfFame.csv"));
 
         String line ="";
@@ -18,28 +18,44 @@ public class HallOfFameMain {
 
         br.readLine();
 
+        //1. 원본 파일 생성
         while((line = br.readLine()) != null){
 
             String[] splitted = line.split(",");
-
+/*
+//3항 연산자 형태(공백 입력 유효성 검사)
             int ballots = (splitted[3].equals("")) ? 0 : Integer.parseInt(splitted[3]);
             int needed = (splitted[4].equals("")) ? 0 : Integer.parseInt(splitted[4]);
             int votes = (splitted[5].equals("")) ? 0 : Integer.parseInt(splitted[5]);
-            halls.add(new HallOfFame(splitted[0], ballots, needed, votes));
+            halls.add(new HallOfFame(splitted[0].replace("", " "), ballots, needed, votes));
+*/
+
+//함수 만들어서 하는 형태(공백 입력 유효성 검사)
+            HallOfFame fame = new HallOfFame();
+            splitted[0].replace("", " ");
+            fame.setPlayerId(splitted[0]);
+            fame.setBallots(NullUtil.parseInt(splitted[3]));
+            fame.setNeeded(NullUtil.parseInt(splitted[4]));
+            fame.setVotes(NullUtil.parseInt(splitted[5]));
+            halls.add(fame);
+
+
         }
 
 
         List<PlayerAverage> newList = new ArrayList<>();
 
-        //mapping 작업
-        PlayerAverage pa = new PlayerAverage();
+        //2. mapping 작업
         for(HallOfFame e: halls){
-            pa = new PlayerAverage();
+            PlayerAverage pa = new PlayerAverage();
             pa.setPlayerId(e.getPlayerId());
             pa.setAverage(
                     (e.getBallots() + e.getNeeded() + e.getVotes()) / 3);
             newList.add(pa);
         }
+
+ //       System.out.println(newList.size());
+ //       System.out.println(newList.get(1999));
 
         for(PlayerAverage e: newList){
             System.out.println("playerId: " + e.getPlayerId());

@@ -51,5 +51,13 @@ public class HallOfFame {
         this.votes = votes;
     }
 
-
+    @Override
+    public String toString() {
+        return "HallOfFame{" +
+                "playerId='" + playerId + '\'' +
+                ", ballots=" + ballots +
+                ", needed=" + needed +
+                ", votes=" + votes +
+                '}';
+    }
 }

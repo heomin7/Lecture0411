@@ -30,5 +30,12 @@ public class PlayerAverage {
     public void setAverage(int average) {
         this.average = average;
     }
-    
+
+    @Override
+    public String toString() {
+        return "PlayerAverage{" +
+                "playerId='" + playerId + '\'' +
+                ", average=" + average +
+                '}';
+    }
 }
