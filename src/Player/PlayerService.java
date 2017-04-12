@@ -33,7 +33,7 @@ public class PlayerService {
         return LowestSalaryPlayer;
     }
 
-    public double getAllplayersAverageSalary(List<Player> list){
+    public List<Beta> getAllplayersAverageSalary(List<Player> list){
 
         Beta bt = new Beta();
 
@@ -44,7 +44,7 @@ public class PlayerService {
         String oldYear = list.get(0).getYearId();
 
         for(Player e: list){
-            if(e.getYearId() != oldYear){
+            if(!e.getYearId().equals(oldYear)){
                 yearList.add(new Beta(oldYear, (sum/count)));
                 sum = 0;
                 count = 0;
@@ -54,20 +54,6 @@ public class PlayerService {
             count++;
         }
 
-
-
- /*
-        String compStr = yearList.get(0).getYearId();
-        for(Beta e: yearList){
-            if(e.getYearId().equals(compStr)){
-                sum +=
-            }
-        }
-
-
- */
-        System.out.println(yearList);
-
-        return 0.0;
+        return yearList;
     }
 }

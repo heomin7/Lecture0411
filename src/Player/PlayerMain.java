@@ -30,22 +30,26 @@ public class PlayerMain {
         // 2.1 최대값 구하기(Reducing)
 
         PlayerService service = new PlayerService();
-  //      Player player = service.getHighestSalaryPlayer(players);
-  //      System.out.printf("%s 의 연봉은 %d불 입니다.\n",
-  //              player.getPlayerId(), player.getSalary());
+        Player player = service.getHighestSalaryPlayer(players);
+        System.out.printf("%s 의 연봉은 %d불 입니다.\n",
+                player.getPlayerId(), player.getSalary());
 
         //System.out.println(player.toString());
-  //      System.out.println(player);
+        System.out.println(player);
 
 
         //2.2 최소값 구하기
- //       Player player1 = service.getLowestSalaryPlayer(players);
-  //      System.out.printf("%s 의 연봉은 %d불 입니다.\n",
- //               player1.getPlayerId(), player1.getSalary());
+        Player player1 = service.getLowestSalaryPlayer(players);
+        System.out.printf("%s 의 연봉은 %d불 입니다.\n",
+                player1.getPlayerId(), player1.getSalary());
 
-        //2.3 평균
-        double averageSalary = service.getAllplayersAverageSalary(players);
+        //2.3 연도별 평균
+        List<Beta> averageSalaryPerYear = service.getAllplayersAverageSalary(players);
 
+
+        for(Beta e: averageSalaryPerYear){
+            System.out.printf("year: %s년, salary: %,d원\n", e.getYearId(), e.getAverageOfSalary());
+        }
 
 
     }
